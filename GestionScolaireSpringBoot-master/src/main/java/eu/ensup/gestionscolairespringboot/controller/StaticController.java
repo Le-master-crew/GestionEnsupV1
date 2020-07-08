@@ -228,6 +228,7 @@ public class StaticController {
 	@PostMapping("/readEtudiant")
 	public String readEtudiant(@RequestParam("idEtudiant") int id, Model model) {
 		model.addAttribute("etudiant", ietudiantservice.getById(id));
+		
 		return "detailEtudiant";
 	}
 

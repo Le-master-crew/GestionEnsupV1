@@ -41,6 +41,7 @@ public class EtudiantService implements IEtudiantService {
 	@Override
 	public void deleteStudent(Etudiant etudiant) {
 		etudiantDAO.delete(etudiant);
+		
 	}
 
 	@Override

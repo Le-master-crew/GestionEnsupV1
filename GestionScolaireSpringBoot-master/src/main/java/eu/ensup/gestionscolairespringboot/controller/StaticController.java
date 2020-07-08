@@ -102,12 +102,11 @@ public class StaticController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping({"/" , "/accueil"})
+	@RequestMapping({ "/", "/accueil" })
 	public String accueil() {
 
 		return "accueil";
 	}
-
 	
 	@RequestMapping("/getFormAjoutEtudiantCours")
 	public String getFormAjoutEtudiantCours(Model model) {
@@ -115,7 +114,6 @@ public class StaticController {
 		model.addAttribute("listeCours", ietudiantservice.getAllCours());
 		return "ajouterEtudiantCours";
 	}
-
 
 	/**
 	 * permet de lier un étudiant à un cours redirige vers la vue
@@ -180,7 +178,6 @@ public class StaticController {
 
 		return "redirect:/listeEtudiants";
 	}
-
 
 //	/**
 //	 * utilisation de la méthode permettant à un dirigeant de se connecter Dans le
@@ -304,7 +301,7 @@ public class StaticController {
 		etudiant.setAdresse(adresse);
 		etudiant.setTelephone(telephone);
 		etudiant.setDateNaissance(dateNaissance);
-		// ietudiantservice.udpateStudent(etudiant);
+		ietudiantservice.update(etudiant);
 		return "redirect:/listeEtudiants";
 	}
 
@@ -340,9 +337,8 @@ public class StaticController {
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@PostMapping("/deleteEtudiant") // it only support port method
-	public String deleteEtudiant(@RequestParam("idEtudiant") int idEtudiant, Etudiant etudiant, ModelMap modelMap) {
-		etudiant.setId(idEtudiant);
-		// ietudiantservice.deleteStudent(idEtudiant);
+	public String deleteEtudiant(@RequestParam("idEtudiant") int idEtudiant, ModelMap modelMap) {
+		ietudiantservice.deleteStudent(ietudiantservice.getById(idEtudiant));
 		return "messageSuppression"; // welcome is view name. It will call welcome.jsp
 	}
 }

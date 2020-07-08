@@ -48,7 +48,7 @@
 	<meta http-equiv="refresh" content="3;URL=listeEtudiants">
 	<div class="container">
         <div class="card card-container">
-            <h4>L'étudiant a bien été supprimé</h4>
+            <h4>Suppression en cours</h4>
             <h6>Redirection</h6>
             <div class="spinner-border" role="status">
 			  <span class="sr-only">Loading...</span>

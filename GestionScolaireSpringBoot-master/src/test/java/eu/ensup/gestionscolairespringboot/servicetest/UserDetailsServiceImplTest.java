@@ -11,7 +11,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import eu.ensup.gestionscolairespringboot.dao.UserRepository;
-import eu.ensup.gestionscolairespringboot.domaine.MyUserDetails;
 import eu.ensup.gestionscolairespringboot.domaine.User;
 import eu.ensup.gestionscolairespringboot.service.UserDetailsServiceImpl;
 
@@ -35,7 +34,6 @@ class UserDetailsServiceImplTest {
 		String username = "directeur";
 		User user = new User();
 		user.setUsername(username);
-		MyUserDetails userdetails = new MyUserDetails(user);
 		when(userdao.findByUsername(username)).thenReturn(user);
 		assertEquals("directeur", userservice.loadUserByUsername(username).getUsername());
 	}

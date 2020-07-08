@@ -24,7 +24,7 @@ public class Cours {
 	private String libelle;
 	private int nbHeure;
 	@ManyToMany(mappedBy = "cours")
-	private List<Etudiant> etudiants = new ArrayList();
+	private List<Etudiant> etudiants = new ArrayList<Etudiant>();
 	
 	
 	public int getIdCours() {

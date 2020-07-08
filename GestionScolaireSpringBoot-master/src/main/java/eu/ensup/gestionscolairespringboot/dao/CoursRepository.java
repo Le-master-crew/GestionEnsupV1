@@ -5,12 +5,9 @@
  */
 package eu.ensup.gestionscolairespringboot.dao;
 
-import eu.ensup.gestionscolairespringboot.domaine.Cours;
-
-
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import eu.ensup.gestionscolairespringboot.domaine.Cours;
 
 /**
  *
@@ -18,5 +15,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface CoursRepository extends JpaRepository<Cours, Integer>{
     
-	public List<Cours> findAll();
 }

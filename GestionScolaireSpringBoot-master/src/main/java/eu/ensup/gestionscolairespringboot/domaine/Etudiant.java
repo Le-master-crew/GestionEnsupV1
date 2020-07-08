@@ -19,7 +19,7 @@ public class Etudiant extends Personne {
 
 	private String dateNaissance;
 	@ManyToMany
-	private List<Cours> cours = new ArrayList<Cours>();
+	private List<Cours> cours = new ArrayList();
 	
 	public String getDateNaissance() {
 		return dateNaissance;

@@ -64,6 +64,12 @@ public class StaticController {
 		super();
 		this.ietudiantservice = iformationService;
 	}
+	
+	@GetMapping("/accessDenied")
+    public String accessDenied(Model model) 
+    {
+        return "accessDenied";
+    }
 
 	/**
 	 * Méthode listant les étudiants
@@ -87,7 +93,7 @@ public class StaticController {
 	@RequestMapping("/listeCours")
 	public String listeCours(Model model) {
 		System.out.println("entree dans la methode listeEtudiants");
-		// model.addAttribute("listeCours", ietudiantservice.getAllCours());
+		model.addAttribute("listeCours", ietudiantservice.getAllCours());
 		return "listeCours";
 	}
 
@@ -102,28 +108,14 @@ public class StaticController {
 		return "accueil";
 	}
 
-//	/**
-//	 * paramétrage de la page de lancement de l'application redirige vers le
-//	 * formulaire de connexion
-//	 * 
-//	 * @return
-//	 */
-//
-//	@ApiOperation(value = "Vue de la page login, vue par défaut lors du lancement de l'applicaiton")
-//	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
-//			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-//			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-//			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
-//	@GetMapping({ "/","getFormLogin" })
-//	public String home() {
-//
-//		return "getFormLogin";
-//	}
 	
-	@GetMapping("getFormAjoutEtudiantCours")
-	public String getFormAjoutEtudiantCourst() {
+	@RequestMapping("/getFormAjoutEtudiantCours")
+	public String getFormAjoutEtudiantCours(Model model) {
+		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
+		model.addAttribute("listeCours", ietudiantservice.getAllCours());
 		return "ajouterEtudiantCours";
 	}
+
 
 	/**
 	 * permet de lier un étudiant à un cours redirige vers la vue

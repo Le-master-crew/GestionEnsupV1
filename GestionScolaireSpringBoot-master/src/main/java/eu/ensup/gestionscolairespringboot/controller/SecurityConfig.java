@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 import eu.ensup.gestionscolairespringboot.service.UserDetailsServiceImpl;
 
@@ -39,6 +40,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
 	}
+	
+	@Bean
+	public AccessDeniedHandler accessDeniedHandler(){
+	    return new CustomAccessDeniedHandler();
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -63,8 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutSuccessUrl("/login")
 				.permitAll()
 			.and()
-				.exceptionHandling()
-				.accessDeniedPage("/accessDenied.jsp")
+				.exceptionHandling().accessDeniedHandler(accessDeniedHandler()) 
 			.and()
 				.csrf()
 				.disable()

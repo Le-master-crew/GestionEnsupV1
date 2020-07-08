@@ -22,7 +22,7 @@
 	        <div class="man-icon"></div>
 	        <h3 class="title">403</h3>
 	        <p class="info">Oh! Forbiden,Vous n'avez pas la permission d'accéder à cette ressource!</p>
-	        <button type="button" class="home-btn" onclick="location.href ='login';">Accueil</button>
+	        <button type="button" class="home-btn" onclick="location.href ='accueil';">Accueil</button>
 	        <sec:authorize access="isAnonymous()">
 	        	<button type="button" class="home-btn" onclick="location.href ='login';">Se Connecter</button>
 	        </sec:authorize>

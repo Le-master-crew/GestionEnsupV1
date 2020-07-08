@@ -102,13 +102,13 @@ public class StaticController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping({ "/", "/accueil" })
+	@GetMapping({ "/", "/accueil" })
 	public String accueil() {
 
 		return "accueil";
 	}
 	
-	@RequestMapping("/getFormAjoutEtudiantCours")
+	@GetMapping("/getFormAjoutEtudiantCours")
 	public String getFormAjoutEtudiantCours(Model model) {
 		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
 		model.addAttribute("listeCours", ietudiantservice.getAllCours());

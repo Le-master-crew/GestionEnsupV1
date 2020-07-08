@@ -18,6 +18,7 @@ import eu.ensup.gestionscolairespringboot.service.UserDetailsServiceImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
+	@Override
 	public UserDetailsService userDetailsService() {
 		return new UserDetailsServiceImpl();
 	}
@@ -32,7 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService());
 		authProvider.setPasswordEncoder(passwordEncoder());
-		System.out.println(authProvider);
 		return authProvider;
 	}
 

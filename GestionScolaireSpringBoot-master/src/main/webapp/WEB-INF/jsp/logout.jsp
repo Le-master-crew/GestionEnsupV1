@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Déconnexion</title>
 </head>
 	<body>
       <a href="<c:url value="/logout" />">Logout</a>

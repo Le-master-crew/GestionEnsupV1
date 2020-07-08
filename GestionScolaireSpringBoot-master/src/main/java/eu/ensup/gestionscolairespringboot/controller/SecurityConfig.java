@@ -48,11 +48,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					"/register",
 					"/registerOK",
 					"/login",
-					"/js/",
-					"/css/",
+					"/js/**",
+					"/css/**",
 					"/images/").permitAll()
+			.antMatchers("/listeEtudiants*")
+				.hasAuthority("ROLE_DIRECTEUR")
 			.antMatchers("/**")
-				.hasAnyAuthority("USER","ADMIN") 
+				.hasAnyAuthority("ROLE_DIRECTEUR", "ROLE_ENSEIGNANT", "ROLE_ADMIN") 
 			.anyRequest().authenticated()
 			.and()
 				.formLogin()
@@ -63,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 			.and()
 				.exceptionHandling()
-				.accessDeniedPage("/403")
+				.accessDeniedPage("/accessDenied.jsp")
 			.and()
 				.csrf()
 				.disable()

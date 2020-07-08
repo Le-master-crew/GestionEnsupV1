@@ -23,10 +23,10 @@ import eu.ensup.gestionscolairespringboot.service.EtudiantService;
 class EtudiantServiceTest {
 
 	@Mock
-	private EtudiantRepository ietudiantdao;
+	private EtudiantRepository etudiantdao;
 
 	@Mock
-	private CoursRepository icoursdao;
+	private CoursRepository coursdao;
 
 	@Autowired
 	@InjectMocks
@@ -45,7 +45,7 @@ class EtudiantServiceTest {
 		Etudiant etu = new Etudiant();
 		Etudiant etu2 = new Etudiant();
 		etu.setPrenom("test");
-		when(ietudiantdao.save(etu)).thenReturn(etu2);
+		when(etudiantdao.save(etu)).thenReturn(etu2);
 		assertEquals(etu2, etudiantService.saveStudent(etu));
 	}
 
@@ -54,10 +54,10 @@ class EtudiantServiceTest {
 		Etudiant etu = new Etudiant(7, "nom", "prenom", "mail", "adresse", 123, "dateNaissance");
 		// 1. Imposer un comportement à notre mock (dao)
 
-		Mockito.when(ietudiantdao.getOne(7)).thenReturn(etu);
+		Mockito.when(etudiantdao.getOne(7)).thenReturn(etu);
 		// 2. Tester le service
 
-		when(ietudiantdao.getOne(7)).thenReturn(etu); // class Mockito importé en static
+		when(etudiantdao.getOne(7)).thenReturn(etu); // class Mockito importé en static
 		// 2. Utiliser le service
 		Etudiant found = etudiantService.getById(7);
 		// verify(ietudiantdao, times(1)).getOne(7);
@@ -76,7 +76,7 @@ class EtudiantServiceTest {
 		list.add(etu2);
 		list.add(etu3);
 
-		Mockito.when(ietudiantdao.findAll()).thenReturn(list);
+		Mockito.when(etudiantdao.findAll()).thenReturn(list);
 
 		List<Etudiant> listEtu = etudiantService.getAll();
 
@@ -92,21 +92,21 @@ class EtudiantServiceTest {
 		etu.setId(1);
 		cours.setIdCours(2);
 
-		when(ietudiantdao.existsById(1)).thenReturn(true);
-		when(icoursdao.existsById(2)).thenReturn(true);
-		when(ietudiantdao.saveAndFlush(etu)).thenReturn(etu);
+		when(etudiantdao.existsById(1)).thenReturn(true);
+		when(coursdao.existsById(2)).thenReturn(true);
+		when(etudiantdao.saveAndFlush(etu)).thenReturn(etu);
 
 		assertEquals(etu, etudiantService.lierCoursEtudiant(cours, etu));
 
 	}
 
-    @Test
-    void updateTest() {
-    	Etudiant etu = new Etudiant();
+	@Test
+	void updateTest() {
+		Etudiant etu = new Etudiant();
 		Etudiant etu2 = new Etudiant();
 		etu2.setPrenom("prenom");
-		when(ietudiantdao.save(etu)).thenReturn(etu2);
+		when(etudiantdao.save(etu)).thenReturn(etu2);
 		assertEquals(etu2, etudiantService.update(etu));
-    }
+	}
 
 }

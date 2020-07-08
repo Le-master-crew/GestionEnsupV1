@@ -179,29 +179,6 @@ public class StaticController {
 		return "redirect:/listeEtudiants";
 	}
 
-//	/**
-//	 * utilisation de la méthode permettant à un dirigeant de se connecter Dans le
-//	 * cas où cela réussit, redirection vers accueil.jsp sinon error2.jsp
-//	 * 
-//	 * @param password
-//	 * @param login
-//	 * @param direction
-//	 * @param modelMap
-//	 * @return
-//	 */
-//	@PostMapping("/login") // it only support port method
-//	public String login(@RequestParam("password") String password, @RequestParam("login") String login,
-//			Direction direction, ModelMap modelMap) {
-//		direction.setPassword(password);
-//		direction.setLogin(login);
-//		if (ietudiantservice.login(login, password) != null) {
-//			return "redirect:/accueil";
-//		} else {
-//			return "error2";
-//		}
-//
-//	}
-
 	/**
 	 * redirige vers la vue searchEtudiant.jsp pour la recherche d'un étudiant
 	 * 
@@ -231,7 +208,7 @@ public class StaticController {
 		
 		return "detailEtudiant";
 	}
-
+	
 	/**
 	 * redirige vers la vue rechercheModificationEtudiant.jsp pour la modification
 	 * d'un étudiant

@@ -97,7 +97,7 @@ public class StaticController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping( "/accueil")
+	@RequestMapping({"/", "/accueil"})
 	public String accueil() {
 
 		return "accueil";

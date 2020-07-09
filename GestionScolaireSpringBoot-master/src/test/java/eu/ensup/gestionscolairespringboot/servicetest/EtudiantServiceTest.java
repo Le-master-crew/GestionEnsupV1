@@ -108,5 +108,17 @@ class EtudiantServiceTest {
 		when(etudiantdao.save(etu)).thenReturn(etu2);
 		assertEquals(etu2, etudiantService.update(etu));
 	}
+	
+	@Test
+   	void getAllCoursTest() {
+    		List<Cours> listeCours = new ArrayList<>();
+    		Cours c1 = new Cours();
+    		Cours c2 = new Cours();
+    		listeCours.add(c1);
+    		listeCours.add(c2);
+    		when(icoursdao.findAll()).thenReturn(listeCours);
+    		assertEquals(2, listeCours.size());
+    	}
+
 
 }

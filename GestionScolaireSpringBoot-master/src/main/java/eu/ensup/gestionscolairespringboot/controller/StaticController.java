@@ -77,9 +77,8 @@ public class StaticController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/listeEtudiants")
+	@GetMapping("/listeEtudiants")
 	public String listeEtudiants(Model model) {
-		System.out.println("entree dans la methode listeEtudiants");
 		model.addAttribute("listeEtudiants", ietudiantservice.getAll());
 		return "listeEtudiants";
 	}
@@ -90,9 +89,8 @@ public class StaticController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/listeCours")
+	@GetMapping("/listeCours")
 	public String listeCours(Model model) {
-		System.out.println("entree dans la methode listeEtudiants");
 		model.addAttribute("listeCours", ietudiantservice.getAllCours());
 		return "listeCours";
 	}
@@ -125,7 +123,6 @@ public class StaticController {
 	 */
 	@PostMapping("/lierEtudiantCours")
 	public String lierEtudiantCours(Etudiant etudiant, Cours cours) {
-		System.out.println("entree dans la methode ajouterEtudiant");
 		ietudiantservice.lierCoursEtudiant(cours, etudiant);
 		return "messageAjoutEtudiantCours";
 	}
@@ -137,7 +134,6 @@ public class StaticController {
 	 */
 	@GetMapping("getFormAjoutEtudiant")
 	public String getFormAjoutEtudiant() {
-		System.out.println("get ajout etudiant ctrl");
 		return "ajouterEtudiant";
 	}
 
@@ -166,9 +162,9 @@ public class StaticController {
 	@PostMapping("/saveEtudiant")
 	public String saveEtudiant(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom,
 			@RequestParam("telephone") int telephone, @RequestParam("adresse") String adresse,
-			@RequestParam("mail") String mail, @RequestParam("dateNaissance") String dateNaissance, Etudiant etudiant,
+			@RequestParam("mail") String mail, @RequestParam("dateNaissance") String dateNaissance,
 			ModelMap modelMap) {
-		System.out.println("post ajout etudiant ctrl");
+		Etudiant etudiant = new Etudiant();
 		etudiant.setNom(nom);
 		etudiant.setPrenom(prenom);
 		etudiant.setAdresse(adresse);
@@ -205,7 +201,6 @@ public class StaticController {
 	@PostMapping("/readEtudiant")
 	public String readEtudiant(@RequestParam("idEtudiant") int id, Model model) {
 		model.addAttribute("etudiant", ietudiantservice.getById(id));
-		
 		return "detailEtudiant";
 	}
 	
@@ -272,7 +267,8 @@ public class StaticController {
 	public String udpateEtudiant(@RequestParam("idEtudiant") int idEtudiant, @RequestParam("nom") String nom,
 			@RequestParam("prenom") String prenom, @RequestParam("telephone") int telephone,
 			@RequestParam("adresse") String adresse, @RequestParam("mail") String mail,
-			@RequestParam("dateNaissance") String dateNaissance, Etudiant etudiant, ModelMap modelMap) {
+			@RequestParam("dateNaissance") String dateNaissance, ModelMap modelMap) {
+		Etudiant etudiant = new Etudiant();
 		etudiant.setId(idEtudiant);
 		etudiant.setNom(nom);
 		etudiant.setPrenom(prenom);

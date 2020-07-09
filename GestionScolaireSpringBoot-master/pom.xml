@@ -18,7 +18,9 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<sonar.sources>pom.xml,src/main,src/test</sonar.sources>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<sonar.sources>pom.xml,src/main/java,src/test/java</sonar.sources>
 		<sonar.tests></sonar.tests>
 	</properties>
 

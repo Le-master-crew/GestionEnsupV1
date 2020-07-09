@@ -117,7 +117,7 @@ class EtudiantServiceTest {
     		listeCours.add(c1);
     		listeCours.add(c2);
     		when(coursdao.findAll()).thenReturn(listeCours);
-    		assertEquals(2, listeCours.size());
+    		assertEquals(2, etudiantService.getAllCours().size());
     	}
 
 

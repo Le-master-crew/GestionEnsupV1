@@ -45,6 +45,7 @@ Technologies utilisées :
 - Heroku
 - Jenkins
 - Swagger
+- Sprin Security
 
 
 Voici le lien du DockerHub sur lequel vous pouvez trouver l'image de l'application :
